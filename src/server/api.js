@@ -27,3 +27,18 @@ export const getCovidData = async (isoCode) => {
     }
   }
 };
+
+export const getTotalCovidData = async () => {
+  try {
+    const dataResponse = await (
+      await fetch(`${BASER_URL}reports/total`)
+    ).json();
+    return dataResponse;
+  } catch (error) {
+    if (error) {
+      return {
+        error: error.message,
+      };
+    }
+  }
+};

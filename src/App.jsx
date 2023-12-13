@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Navigation from "./components/navigation/Navigation";
 import InfoContainer from "./components/InfoContainer/InfoContainer";
+import { getTotalCovidData } from "./server/api";
+import TotalData from "./components/TotalData/TotalData";
 
 const mapDispatchProps = (dispatch) => ({
   fetchRegionData: () => dispatch(fetchRegionData()),
@@ -20,7 +22,7 @@ function App({ fetchRegionData, regionData, loading, error }) {
   // update Redux store at App initial render
   useEffect(() => {
     fetchRegionData();
-  }, [fetchRegionData]);
+  }, [fetchRegionData, getTotalCovidData]);
 
   const [country, setCountry] = useState({
     selectedCountry: "",
@@ -53,6 +55,7 @@ function App({ fetchRegionData, regionData, loading, error }) {
                     ))}
                 </select>
               </div>
+              {/* <TotalData /> */}
               <InfoContainer
                 selectedISO={country.iso}
                 selectedCountry={country.selectedCountry}

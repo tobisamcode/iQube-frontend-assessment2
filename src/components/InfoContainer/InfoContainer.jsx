@@ -5,14 +5,21 @@ import worldSVG from "../../assets/world-svg.svg";
 import ReactCountryFlag from "react-country-flag";
 import { countries } from "country-flags-svg";
 import { InfoCard } from "../infoCard/InfoCard";
-import { fetchCovidData } from "../../redux/actions/covidActions";
+import {
+  fetchCovidData,
+  fetchTotalCovidData,
+} from "../../redux/actions/covidActions";
 import { connect } from "react-redux";
 import DoughnutChart from "../Doughnut/DoughnutChart";
+import TotalData from "../TotalData/TotalData";
 
 const mapStateToProps = ({ covid }) => ({
   covidData: covid.covidData,
   loading: covid.loading,
   error: covid.error,
+  totalCovidData: covid.totalCovidData,
+  totalLoading: covid.totalLoading,
+  totalError: covid.totalError,
 });
 
 function InfoContainer({
@@ -21,6 +28,10 @@ function InfoContainer({
   selectedCountry,
   selectedISO,
   fetchCovidData,
+  fetchTotalCovidData,
+  totalCovidData,
+  totalError,
+  totalLoading,
 }) {
   const countryFlag = countries.filter((item) => item.name === selectedCountry);
 
@@ -42,10 +53,11 @@ function InfoContainer({
   };
 
   useEffect(() => {
+    fetchTotalCovidData();
     if (selectedISO) {
       fetchCovidData(selectedISO);
     }
-  }, [selectedISO, fetchCovidData]);
+  }, [selectedISO, fetchCovidData, fetchTotalCovidData]);
 
   if (covidData) {
     console.log(covidData.data);
@@ -75,21 +87,25 @@ function InfoContainer({
         </h3>
         <p className="last_update">
           lastly updated on{" "}
-          {covidData ? formatDateTime(covidData.data.last_update) : "N/A"}
+          {covidData
+            ? formatDateTime(covidData.data.last_update)
+            : totalCovidData
+            ? formatDateTime(totalCovidData.data.last_update)
+            : "N/A"}
         </p>
       </div>
 
       {!loading && selectedISO && covidData ? (
         <InfoCard covidData={covidData.data} />
-      ) : !covidData && !selectedISO ? (
-        <div className="loading">SELECT A REGION</div>
+      ) : !covidData && !selectedISO && totalCovidData ? (
+        <TotalData totalCovidData={totalCovidData.data} />
       ) : loading ? (
         <div className="loading"> LOADING DATA ... </div>
       ) : (
         ""
       )}
 
-      {!loading && (
+      {!loading && !totalLoading && (
         <div className="indicator_container">
           <div className="indicator_card">
             <p>Active Cases</p>
@@ -105,4 +121,7 @@ function InfoContainer({
   );
 }
 
-export default connect(mapStateToProps, { fetchCovidData })(InfoContainer);
+export default connect(mapStateToProps, {
+  fetchCovidData,
+  fetchTotalCovidData,
+})(InfoContainer);
