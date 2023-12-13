@@ -5,7 +5,7 @@ import "./navigationStyle.css";
 export default function Navigation() {
   return (
     <div className="app-bar">
-      <img src={covid} alt="flag" width="80px" />
+      <img src={covid} alt="flag" />
 
       <h1>Covid Tracker</h1>
     </div>

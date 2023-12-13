@@ -5,6 +5,24 @@ import diff from "../../assets/diff.svg";
 import DoughnutChart from "../Doughnut/DoughnutChart";
 
 export const InfoCard = ({ covidData }) => {
+  const Cards = [
+    {
+      title: "Confirmed Cases",
+      value: covidData.confirmed,
+      dif: covidData.confirmed_diff,
+    },
+    {
+      title: "Active Cases",
+      value: covidData.active,
+      dif: covidData.active_diff,
+    },
+    {
+      title: "Deaths",
+      value: covidData.deaths,
+      dif: covidData.deaths_diff,
+    },
+  ];
+
   function formatNumberWithCommas(number) {
     const formatter = new Intl.NumberFormat("en-US");
     return formatter.format(number);
@@ -12,54 +30,22 @@ export const InfoCard = ({ covidData }) => {
 
   return (
     <div className="card_container">
-      <div className="card">
-        <div className="top-bar"></div>
-        <h1 className="card_title">Total Cases</h1>
-        <div className="data">
-          <div className="">
-            <p className="num active">
-              {formatNumberWithCommas(covidData.confirmed)}
-            </p>
-            <span className="diff">
-              Diff:{" "}
-              <span className="diff_color">+{covidData.confirmed_diff}</span>
-            </span>
+      {Cards.map(({ title, value, dif }, index) => (
+        <div key={index} className="card">
+          <div className="top-bar"></div>
+          <h1 className="card_title">{title}</h1>
+          <div className="data">
+            <div className="">
+              <p className="num active">{formatNumberWithCommas(value)}</p>
+              <span className="diff">
+                Diff:
+                <span className="diff_color">+{dif}</span>
+              </span>
+            </div>
+            <img src={diff} alt="diff" width="50px" />
           </div>
-          <img src={diff} alt="diff" width="50px" />
         </div>
-      </div>
-
-      <div className="card">
-        <div className="top-bar"></div>
-        <h1 className="card_title">Deaths</h1>
-        <div className="data">
-          <div className="">
-            <p className="num active">
-              {formatNumberWithCommas(covidData.deaths)}
-            </p>
-            <span className="diff">
-              Diff: <span className="diff_color">+{covidData.deaths_diff}</span>
-            </span>
-          </div>
-          <img src={diff} alt="diff" width="50px" />
-        </div>
-      </div>
-
-      <div className="card">
-        <div className="top-bar"></div>
-        <h1 className="card_title">Active Cases</h1>
-        <div className="data">
-          <div className="">
-            <p className="num active">
-              {formatNumberWithCommas(covidData.active)}
-            </p>
-            <span className="diff">
-              Diff: <span className="diff_color">+{covidData.active_diff}</span>
-            </span>
-          </div>
-          <img src={diff} alt="diff" width="50px" />
-        </div>
-      </div>
+      ))}
 
       <div className="chart-container">
         {covidData ? (

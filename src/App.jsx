@@ -41,7 +41,7 @@ function App({ fetchRegionData, regionData, loading, error }) {
           {!loading && regionData ? (
             <div className="container">
               <div className="select-div">
-                <label className="label">View By Country: </label>
+                <label className="label">View by Region: </label>
                 <select className="custom-select" onChange={handleChange}>
                   <option value="">Select</option>
                   {regionData.data.map(({ iso, name }) => (

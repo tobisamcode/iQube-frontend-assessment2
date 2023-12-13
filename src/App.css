@@ -5,8 +5,7 @@
 }
 
 .all {
-  background-color: #f5f6fa;
-  height: 100vh;
+  padding-bottom: 2rem;
 }
 
 .main-container {
@@ -74,5 +73,10 @@
 @media only screen and (max-width: 600px) {
   .ratings div {
     flex-basis: 100%;
+  }
+
+  .main-container {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
