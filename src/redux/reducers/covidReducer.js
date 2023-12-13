@@ -62,6 +62,7 @@ const covidReducer = (state = initialState, action) => {
     case FETCH_TOTAL_SUCCESS:
       return {
         ...state,
+        loading: false,
 
         totalLoading: false,
         totalError: "",
