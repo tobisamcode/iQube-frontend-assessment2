@@ -10,7 +10,7 @@ const DoughnutChart = ({ covidData }) => {
     datasets: [
       {
         data: [confirmed, active, deaths],
-        backgroundColor: [, "#36a2eb", "#FFCE56", "#FFF"],
+        backgroundColor: ["#FFCE56", "#36a2eb", , "#000"],
       },
     ],
   };
