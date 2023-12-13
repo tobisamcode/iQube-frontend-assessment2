@@ -1,0 +1,64 @@
+.info_container {
+  width: 70%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.selected_con {
+  font-weight: 500;
+  color: rgb(159, 155, 155);
+}
+
+.last_update {
+  margin-left: 6rem;
+  color: rgb(159, 155, 155);
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.indicator_container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.indicator_container .indicator_card {
+  display: flex;
+  font-size: 10px;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.indicator_1,
+.indicator_2,
+.indicator_3 {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.indicator_1 {
+  background-color: #36a2eb;
+}
+
+.indicator_2 {
+  background-color: #ffc434;
+}
+
+.indicator_3 {
+  background-color: black;
+}
+
+.loading {
+  letter-spacing: 2px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 10rem;
+}

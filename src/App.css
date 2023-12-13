@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.all {
+  background-color: #f5f6fa;
+  height: 100vh;
+}
+
+.main-container {
+  max-width: 1200px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: auto;
+}
+
+.ratings {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.ratings div {
+  flex-basis: 50%;
+  padding: 10px;
+}
+
+.custom-select {
+  padding: 10px 20px;
+  background: none;
+  border-radius: 3px;
+  width: 200px;
+  margin-left: 10px;
+  outline: none;
+}
+
+.select-div {
+  text-align: right;
+  padding: 10px 0;
+}
+
+.option,
+.label {
+  font-size: 0.9rem;
+  color: rgb(147, 140, 140);
+  font-weight: 600;
+}
+
+.isloading {
+  text-align: center;
+  letter-spacing: 3px;
+  margin-top: 2rem;
+}
+
+.container {
+  padding: 20px 10px;
+}
+
+/* App.css */
+.chart-container {
+  margin: 0 auto;
+  width: 200px; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+}
+
+.doughnut_header {
+  color: #929397;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .ratings div {
+    flex-basis: 100%;
+  }
+}
