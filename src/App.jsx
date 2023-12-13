@@ -44,11 +44,13 @@ function App({ fetchRegionData, regionData, loading, error }) {
                 <label className="label">View by Region: </label>
                 <select className="custom-select" onChange={handleChange}>
                   <option value="">Select</option>
-                  {regionData.data.map(({ iso, name }) => (
-                    <option className="option" key={name} value={name}>
-                      {name}
-                    </option>
-                  ))}
+                  {regionData.data
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map(({ iso, name }) => (
+                      <option className="option" key={name} value={name}>
+                        {name}
+                      </option>
+                    ))}
                 </select>
               </div>
               <InfoContainer
