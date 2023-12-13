@@ -92,10 +92,6 @@ function InfoContainer({
       {!loading && (
         <div className="indicator_container">
           <div className="indicator_card">
-            <p>Total Cases</p>
-            <span className="indicator_1"></span>
-          </div>
-          <div className="indicator_card">
             <p>Active Cases</p>
             <span className="indicator_2"></span>
           </div>

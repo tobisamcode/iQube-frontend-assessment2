@@ -4,13 +4,13 @@ import { Chart, ArcElement } from "chart.js";
 Chart.register(ArcElement);
 
 const DoughnutChart = ({ covidData }) => {
-  const { confirmed, active, deaths } = covidData;
+  const { active, deaths } = covidData;
   const data = {
-    labels: ["Confirmed", "Active", "Deaths"],
+    labels: ["Active", "Deaths"],
     datasets: [
       {
-        data: [confirmed, active, deaths],
-        backgroundColor: ["#FFCE56", "#36a2eb", , "#000"],
+        data: [active, deaths],
+        backgroundColor: ["#FFCE56", "#000"],
       },
     ],
   };
