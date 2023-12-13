@@ -105,18 +105,19 @@ function InfoContainer({
         ""
       )}
 
-      {!loading && !totalLoading && (
-        <div className="indicator_container">
-          <div className="indicator_card">
-            <p>Active Cases</p>
-            <span className="indicator_2"></span>
+      {!loading ||
+        (!totalLoading && (
+          <div className="indicator_container">
+            <div className="indicator_card">
+              <p>Active Cases</p>
+              <span className="indicator_2"></span>
+            </div>
+            <div className="indicator_card">
+              <p>Deaths</p>
+              <span className="indicator_3"></span>
+            </div>
           </div>
-          <div className="indicator_card">
-            <p>Deaths</p>
-            <span className="indicator_3"></span>
-          </div>
-        </div>
-      )}
+        ))}
     </div>
   );
 }
